@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>1</title>
+    <url>/2019/06/25/1/</url>
+    <content><![CDATA[<p>111111</p>
+]]></content>
+      <categories>
+        <category>分布式</category>
+      </categories>
+      <tags>
+        <tag>mq,分布式</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>2</title>
+    <url>/2019/06/25/2/</url>
+    <content><![CDATA[<p>2222222</p>
+]]></content>
+      <categories>
+        <category>分布式</category>
+      </categories>
+      <tags>
+        <tag>redis,分布式</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>4</title>
+    <url>/2019/06/25/4/</url>
+    <content><![CDATA[<p>44444</p>
+]]></content>
+      <categories>
+        <category>分布式</category>
+      </categories>
+      <tags>
+        <tag>zookeeper,分布式</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>3</title>
+    <url>/2019/06/25/3/</url>
+    <content><![CDATA[<p>333</p>
+]]></content>
+      <categories>
+        <category>分布式</category>
+      </categories>
+      <tags>
+        <tag>dubbo,分布式</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>5</title>
+    <url>/2019/06/25/5/</url>
+    <content><![CDATA[<p>555</p>
+]]></content>
+      <categories>
+        <category>高并发</category>
+      </categories>
+      <tags>
+        <tag>zookeeper,高并发</tag>
+      </tags>
+  </entry>
+</search>
