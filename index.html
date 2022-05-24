@@ -71,6 +71,60 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Redis专题" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/05/24/Redis%E4%B8%93%E9%A2%98/" class="article-date">
+  <time class="dt-published" datetime="2022-05-24T03:39:47.594Z" itemprop="datePublished">2022-05-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/05/24/Redis%E4%B8%93%E9%A2%98/">Redis专题</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="redis的数据类型有哪些"><a href="#redis的数据类型有哪些" class="headerlink" title="redis的数据类型有哪些"></a>redis的数据类型有哪些</h2><p>String<br>常规的set&#x2F;get操作，value可以是String也可以是数字。<br>应用：一般做一些复杂的计数功能的缓存。<br>hash<br>这里value存放的是结构化的对象，比较方便的就是操作其中的某个字段。<br>应用：单点登录，就是用这种数据结构存储用户信息，以cookieId作为key，设置30分钟为缓存过期时间，能很好的模拟出类似session的效果。<br>list<br>List的数据结构<br>应用：可以做简单的消息队列的功能。另外，可以利用lrange命令，做基于redis的分页功能，性能极佳，用户体验好。生产者和消费者的场景，LIST可以很好的完成排队，先进先出的原则。<br>set<br>因为set堆放的是一堆不重复值的集合。<br>应用：可以做全局去重的功能。为什么不用JVM自带的Set进行去重？因为我们的系统一般都是集群部署，使用JVM自带的Set，比较麻烦，难道为了一个做一个全局去重，再起一个公共服务，太麻烦了。 另外，就是利用交集、并集、差集等操作，可以计算共同喜好，全部的喜好，自己独有的喜好等功能。<br>sorted set<br>sorted set多了一个权重参数score，集合中的元素能够按score进行排列。<br>应用：可以做排行榜应用，取TOP N操作。</p>
+<h2 id="为什么-redis-需要把所有数据放到内存中"><a href="#为什么-redis-需要把所有数据放到内存中" class="headerlink" title="为什么 redis 需要把所有数据放到内存中"></a>为什么 redis 需要把所有数据放到内存中</h2><p>Redis 为了达到最快的读写速度将数据都读到内存中，并通过异步的方式将数据写入磁盘。所以 redis 具有快速和数据持久化的特征。如果不将数据放在内存中，磁盘 I&#x2F;O 速度为严重影响 redis 的性能。在内存越来越便宜的今天，redis 将会越来越受欢迎。如果设置了最大使用的内存，则数据已有记录数达到内存限值后不能继续插入新值。</p>
+<h2 id="redis持久化机制"><a href="#redis持久化机制" class="headerlink" title="redis持久化机制"></a>redis持久化机制</h2><p>Redis是一个支持持久化的内存数据库，通过持久化机制把内存中的数据同步到硬盘文件来保证数据持久化。当Redis重启后通过把硬盘文件重新加载到内存，就能达到恢复数据的目的。<br>实现：<br>单独创建fork()一个子进程，将当前父进程的数据库数据复制到子进程的内存中，然后由子进程写入到临时文件中，持久化的过程结束了，再用这个临时文件替换上次的快照文件，然后子进程退出，内存释放。</p>
+<h3 id="方式："><a href="#方式：" class="headerlink" title="方式："></a>方式：</h3><p>RDB是Redis默认的持久化方式。按照一定的时间周期策略把内存的数据以快照的形式保存到硬盘的二进制文件。即Snapshot快照存储，对应产生的数据文件为dump.rdb，通过配置文件中的save参数来定义快照的周期。（ 快照可以是其所表示的数据的一个副本，也可以是数据的一个复制品。）<br>AOF：Redis会将每一个收到的写命令都通过Write函数追加到文件最后，类似于MySQL的binlog。当Redis重启是会通过重新执行文件中保存的写命令来在内存中重建整个数据库的内容。</p>
+<h2 id="RDB和AOF的优缺点"><a href="#RDB和AOF的优缺点" class="headerlink" title="RDB和AOF的优缺点"></a>RDB和AOF的优缺点</h2><h3 id="RDB持久化"><a href="#RDB持久化" class="headerlink" title="RDB持久化"></a>RDB持久化</h3><p>优点：RDB文件紧凑，体积小，网络传输快，适合全量复制；恢复速度比AOF快很多。当然，与AOF相比，RDB最重要的优点之一是对性能的影响相对较小。</p>
+<p>缺点：RDB文件的致命缺点在于其数据快照的持久化方式决定了必然做不到实时持久化，而在数据越来越重要的今天，数据的大量丢失很多时候是无法接受的，因此AOF持久化成为主流。此外，RDB文件需要满足特定格式，兼容性差（如老版本的Redis不兼容新版本的RDB文件）。</p>
+<h3 id="AOF持久化"><a href="#AOF持久化" class="headerlink" title="AOF持久化"></a>AOF持久化</h3><p>优点：支持秒级持久化、兼容性好<br>缺点：文件大、恢复速度慢、对性能影响大</p>
+<h2 id="Redis-过期策略和内存淘汰策略"><a href="#Redis-过期策略和内存淘汰策略" class="headerlink" title="Redis 过期策略和内存淘汰策略"></a>Redis 过期策略和内存淘汰策略</h2><p>我们在set key的时候，可以给它设置一个过期时间，比如expire key 60。指定这key60s后过期，60s后，redis是如何处理的嘛？我们先来介绍几种过期策略：</p>
+<h3 id="定时过期"><a href="#定时过期" class="headerlink" title="定时过期"></a>定时过期</h3><p>每个设置过期时间的key都需要创建一个定时器，到过期时间就会立即对key进行清除。该策略可以立即清除过期的数据，对内存很友好；但是会占用大量的CPU资源去处理过期的数据，从而影响缓存的响应时间和吞吐量。</p>
+<h3 id="惰性过期"><a href="#惰性过期" class="headerlink" title="惰性过期"></a>惰性过期</h3><p>只有当访问一个key时，才会判断该key是否已过期，过期则清除。该策略可以最大化地节省CPU资源，却对内存非常不友好。极端情况可能出现大量的过期key没有再次被访问，从而不会被清除，占用大量内存。</p>
+<h3 id="定期过期"><a href="#定期过期" class="headerlink" title="定期过期"></a>定期过期</h3><p>每隔一定的时间，会扫描一定数量的数据库的expires字典中一定数量的key，并清除其中已过期的key。该策略是前两者的一个折中方案。通过调整定时扫描的时间间隔和每次扫描的限定耗时，可以在不同情况下使得CPU和内存资源达到最优的平衡效果。<br>expires字典会保存所有设置了过期时间的key的过期时间数据，其中，key是指向键空间中的某个键的指针，value是该键的毫秒精度的UNIX时间戳表示的过期时间。键空间是指该Redis集群中保存的所有键。</p>
+<p>Redis中同时使用了惰性过期和定期过期两种过期策略。</p>
+<p>假设Redis当前存放30万个key，并且都设置了过期时间，如果你每隔100ms就去检查这全部的key，CPU负载会特别高，最后可能会挂掉。<br>因此，redis采取的是定期过期，每隔100ms就随机抽取一定数量的key来检查和删除的。<br>但是呢，最后可能会有很多已经过期的key没被删除。这时候，redis采用惰性删除。在你获取某个key的时候，redis会检查一下，这个key如果设置了过期时间并且已经过期了，此时就会删除。</p>
+<p>但是呀，如果定期删除漏掉了很多过期的key，然后也没走惰性删除。就会有很多过期key积在内存内存，直接会导致内存爆的。或者有些时候，业务量大起来了，redis的key被大量使用，内存直接不够了，运维小哥哥也忘记加大内存了。难道redis直接这样挂掉？不会的！Redis用8种内存淘汰策略保护自己~</p>
+<h3 id="Redis-内存淘汰策略"><a href="#Redis-内存淘汰策略" class="headerlink" title="Redis 内存淘汰策略"></a>Redis 内存淘汰策略</h3><p>volatile-lru：当内存不足以容纳新写入数据时，从设置了过期时间的key中使用LRU（最近最少使用）算法进行淘汰；<br>allkeys-lru：当内存不足以容纳新写入数据时，从所有key中使用LRU（最近最少使用）算法进行淘汰。<br>volatile-lfu：4.0版本新增，当内存不足以容纳新写入数据时，在过期的key中，使用LFU算法进行删除key。<br>allkeys-lfu：4.0版本新增，当内存不足以容纳新写入数据时，从所有key中使用LFU算法进行淘汰；<br>volatile-random：当内存不足以容纳新写入数据时，从设置了过期时间的key中，随机淘汰数据；。<br>allkeys-random：当内存不足以容纳新写入数据时，从所有key中随机淘汰数据。<br>volatile-ttl：当内存不足以容纳新写入数据时，在设置了过期时间的key中，根据过期时间进行淘汰，越早过期的优先被淘汰；<br>noeviction：默认策略，当内存不足以容纳新写入数据时，新写入操作会报错。</p>
+<p><img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/6439b5cbe2b547f4b6bc7fe94d3d29ad~tplv-k3u1fbpfcp-zoom-in-crop-mark:1304:0:0:0.awebp" alt="RDB和AOF两种持久化机制，它持久化文件加载流程"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/05/24/Redis%E4%B8%93%E9%A2%98/" data-id="cl3jm00000000d0r46trocncl" data-title="Redis专题" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-分布式事务专题-RocketMQ事务消息" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2022/05/23/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1%E4%B8%93%E9%A2%98-RocketMQ%E4%BA%8B%E5%8A%A1%E6%B6%88%E6%81%AF/" class="article-date">
@@ -262,6 +316,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2022/05/24/Redis%E4%B8%93%E9%A2%98/">Redis专题</a>
+          </li>
         
           <li>
             <a href="/2022/05/23/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1%E4%B8%93%E9%A2%98-RocketMQ%E4%BA%8B%E5%8A%A1%E6%B6%88%E6%81%AF/">分布式事务专题-RocketMQ事务消息</a>
