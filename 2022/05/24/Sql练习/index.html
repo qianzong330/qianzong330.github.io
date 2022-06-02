@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Sql练习 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="环境搭建123456789101112131415161718192021222324252627282930313233343536373839404142434445create table Student(sid varchar(10),sname varchar(10),sage datetime,ssex nvarchar(10));insert into Student values(">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Sql练习">
+<meta property="og:url" content="http://example.com/2022/05/24/Sql%E7%BB%83%E4%B9%A0/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="环境搭建123456789101112131415161718192021222324252627282930313233343536373839404142434445create table Student(sid varchar(10),sname varchar(10),sage datetime,ssex nvarchar(10));insert into Student values(">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-05-24T08:06:43.703Z">
+<meta property="article:modified_time" content="2022-05-24T09:33:13.723Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-Sql练习" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/05/24/Sql%E7%BB%83%E4%B9%A0/" class="article-date">
+  <time class="dt-published" datetime="2022-05-24T08:06:43.703Z" itemprop="datePublished">2022-05-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Sql练习
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">create table Student(sid varchar(10),sname varchar(10),sage datetime,ssex nvarchar(10));</span><br><span class="line">insert into Student values(<span class="string">&#x27;01&#x27;</span>,<span class="string">&#x27;赵雷&#x27;</span>,<span class="string">&#x27;1990-01-01&#x27;</span>,<span class="string">&#x27;男&#x27;</span>);</span><br><span class="line">insert into Student values(<span class="string">&#x27;02&#x27;</span>,<span class="string">&#x27;钱电&#x27;</span>,<span class="string">&#x27;1990-12-21&#x27;</span>,<span class="string">&#x27;男&#x27;</span>);</span><br><span class="line">insert into Student values(<span class="string">&#x27;03&#x27;</span>,<span class="string">&#x27;孙风&#x27;</span>,<span class="string">&#x27;1990-05-20&#x27;</span>,<span class="string">&#x27;男&#x27;</span>);</span><br><span class="line">insert into Student values(<span class="string">&#x27;04&#x27;</span>,<span class="string">&#x27;李云&#x27;</span>,<span class="string">&#x27;1990-08-06&#x27;</span>,<span class="string">&#x27;男&#x27;</span>);</span><br><span class="line">insert into Student values(<span class="string">&#x27;05&#x27;</span>,<span class="string">&#x27;周梅&#x27;</span>,<span class="string">&#x27;1991-12-01&#x27;</span>,<span class="string">&#x27;女&#x27;</span>);</span><br><span class="line">insert into Student values(<span class="string">&#x27;06&#x27;</span>,<span class="string">&#x27;吴兰&#x27;</span>,<span class="string">&#x27;1992-03-01&#x27;</span>,<span class="string">&#x27;女&#x27;</span>);</span><br><span class="line">insert into Student values(<span class="string">&#x27;07&#x27;</span>,<span class="string">&#x27;郑⽵&#x27;</span>,<span class="string">&#x27;1989-07-01&#x27;</span>,<span class="string">&#x27;女&#x27;</span>);</span><br><span class="line">insert into Student values(<span class="string">&#x27;08&#x27;</span>,<span class="string">&#x27;王菊&#x27;</span>,<span class="string">&#x27;1990-01-20&#x27;</span>,<span class="string">&#x27;女&#x27;</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> </span><br><span class="line">create table Course(cid varchar(10),cname varchar(10),tid varchar(10));</span><br><span class="line">insert into Course values(<span class="string">&#x27;01&#x27;</span>,<span class="string">&#x27;语⽂&#x27;</span>,<span class="string">&#x27;02&#x27;</span>);</span><br><span class="line">insert into Course values(<span class="string">&#x27;02&#x27;</span>,<span class="string">&#x27;数学&#x27;</span>,<span class="string">&#x27;01&#x27;</span>);</span><br><span class="line">insert into Course values(<span class="string">&#x27;03&#x27;</span>,<span class="string">&#x27;英语&#x27;</span>,<span class="string">&#x27;03&#x27;</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">create table Teacher(tid varchar(10),tname varchar(10));</span><br><span class="line">insert into Teacher values(<span class="string">&#x27;01&#x27;</span>,<span class="string">&#x27;张三&#x27;</span>);</span><br><span class="line">insert into Teacher values(<span class="string">&#x27;02&#x27;</span>,<span class="string">&#x27;李四&#x27;</span>);</span><br><span class="line">insert into Teacher values(<span class="string">&#x27;03&#x27;</span>,<span class="string">&#x27;王五&#x27;</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">create table SC(sid varchar(10),cid varchar(10),score decimal(18,1));</span><br><span class="line">insert into SC values(<span class="string">&#x27;01&#x27;</span>,<span class="string">&#x27;01&#x27;</span>,80);</span><br><span class="line">insert into SC values(<span class="string">&#x27;01&#x27;</span>,<span class="string">&#x27;02&#x27;</span>,90);</span><br><span class="line">insert into SC values(<span class="string">&#x27;01&#x27;</span>,<span class="string">&#x27;03&#x27;</span>,99);</span><br><span class="line">insert into SC values(<span class="string">&#x27;02&#x27;</span>,<span class="string">&#x27;01&#x27;</span>,70);</span><br><span class="line">insert into SC values(<span class="string">&#x27;02&#x27;</span>,<span class="string">&#x27;02&#x27;</span>,60);</span><br><span class="line">insert into SC values(<span class="string">&#x27;02&#x27;</span>,<span class="string">&#x27;03&#x27;</span>,80);</span><br><span class="line">insert into SC values(<span class="string">&#x27;03&#x27;</span>,<span class="string">&#x27;01&#x27;</span>,80);</span><br><span class="line">insert into SC values(<span class="string">&#x27;03&#x27;</span>,<span class="string">&#x27;02&#x27;</span>,80);</span><br><span class="line">insert into SC values(<span class="string">&#x27;03&#x27;</span>,<span class="string">&#x27;03&#x27;</span>,80);</span><br><span class="line">insert into SC values(<span class="string">&#x27;04&#x27;</span>,<span class="string">&#x27;01&#x27;</span>,50);</span><br><span class="line">insert into SC values(<span class="string">&#x27;04&#x27;</span>,<span class="string">&#x27;02&#x27;</span>,30);</span><br><span class="line">insert into SC values(<span class="string">&#x27;04&#x27;</span>,<span class="string">&#x27;03&#x27;</span>,20);</span><br><span class="line">insert into SC values(<span class="string">&#x27;05&#x27;</span>,<span class="string">&#x27;01&#x27;</span>,76);</span><br><span class="line">insert into SC values(<span class="string">&#x27;05&#x27;</span>,<span class="string">&#x27;02&#x27;</span>,87);</span><br><span class="line">insert into SC values(<span class="string">&#x27;06&#x27;</span>,<span class="string">&#x27;01&#x27;</span>,31);</span><br><span class="line">insert into SC values(<span class="string">&#x27;06&#x27;</span>,<span class="string">&#x27;03&#x27;</span>,34);</span><br><span class="line">insert into SC values(<span class="string">&#x27;07&#x27;</span>,<span class="string">&#x27;02&#x27;</span>,89);</span><br><span class="line">insert into SC values(<span class="string">&#x27;07&#x27;</span>,<span class="string">&#x27;03&#x27;</span>,98);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="查询“01”课程比“02”课程成绩高的所有学生的学号；"><a href="#查询“01”课程比“02”课程成绩高的所有学生的学号；" class="headerlink" title="查询“01”课程比“02”课程成绩高的所有学生的学号；"></a>查询“01”课程比“02”课程成绩高的所有学生的学号；</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">select t1.sid,t1.score1,t2.score2 from </span><br><span class="line">(select </span><br><span class="line">sid,score as score1</span><br><span class="line">from SC <span class="built_in">where</span> cid=<span class="string">&#x27;01&#x27;</span>) t1</span><br><span class="line"></span><br><span class="line"><span class="built_in">join</span> </span><br><span class="line">(select </span><br><span class="line">sid,score as score2</span><br><span class="line">from SC <span class="built_in">where</span> cid = <span class="string">&#x27;02&#x27;</span>) t2  on t1.sid = t2.sid and t1.score1 &gt; t2.score2</span><br></pre></td></tr></table></figure>
+<h3 id="查询平均成绩大于60分的同学的学号和平均成绩"><a href="#查询平均成绩大于60分的同学的学号和平均成绩" class="headerlink" title="查询平均成绩大于60分的同学的学号和平均成绩"></a>查询平均成绩大于60分的同学的学号和平均成绩</h3><p>select<br>sid,avg(score)<br>from SC group by sid having avg(score) &gt; 60</p>
+<h3 id="查询所有同学的学号、姓名、选课数、总成绩"><a href="#查询所有同学的学号、姓名、选课数、总成绩" class="headerlink" title="查询所有同学的学号、姓名、选课数、总成绩"></a>查询所有同学的学号、姓名、选课数、总成绩</h3><p>select s.sid,s.sname,ifnull(count(cid),0),ifnull(sum(score),0)  from Student s left join SC sc on s.sid &#x3D; sc.sid  group by sid</p>
+<h3 id="查询姓“李”的老师的个数"><a href="#查询姓“李”的老师的个数" class="headerlink" title="查询姓“李”的老师的个数"></a>查询姓“李”的老师的个数</h3><p>select count(sid) from Student where sname like  ‘李%’;</p>
+<h3 id="查询没学过“张三”老师课的同学的学号、姓名"><a href="#查询没学过“张三”老师课的同学的学号、姓名" class="headerlink" title="查询没学过“张三”老师课的同学的学号、姓名"></a>查询没学过“张三”老师课的同学的学号、姓名</h3><p>select<br>s.sid,s.sname<br>from Student s where s.sid not in(<br>select<br>sc.sid<br>from SC sc left join Course c on sc.cid &#x3D; c.cid left join Teacher t on t.tid &#x3D; c.tid where t.tname&#x3D;’张三’);</p>
+<h3 id="查询学过编号“01”并且也学过编号“02”课程的同学的学号、姓名"><a href="#查询学过编号“01”并且也学过编号“02”课程的同学的学号、姓名" class="headerlink" title="查询学过编号“01”并且也学过编号“02”课程的同学的学号、姓名"></a>查询学过编号“01”并且也学过编号“02”课程的同学的学号、姓名</h3><p>select </p>
+<p>from<br>(</p>
+<p>select<br>sc1.sid<br>from SC sc1 where sc1.cid&#x3D;’01’<br>join<br>SC sc2 where sc2.cid&#x3D;’02’) b;</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/05/24/Sql%E7%BB%83%E4%B9%A0/" data-id="cl3wpioer0006o0r497iubgh3" data-title="Sql练习" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2022/05/30/%E5%B9%82%E7%AD%89%E9%97%AE%E9%A2%98/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Redis专题
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2022/05/24/Redis%E4%B8%93%E9%A2%98/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Redis专题</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">June 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">May 2022</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/06/02/Netty/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2022/06/02/Java%E9%9B%86%E5%90%88%E9%AB%98%E9%A2%91%E9%9D%A2%E8%AF%95%E9%A2%98/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2022/06/02/HashMap%E7%9A%84%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8%E9%97%AE%E9%A2%98/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2022/06/02/HashMap/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2022/06/02/ConcurrentHashMap/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
